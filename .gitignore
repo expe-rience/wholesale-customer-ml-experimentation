@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+data/*
+!data/README.md
+artifacts/*
+!artifacts/README.md
+mlruns/
+.DS_Store
+.vscode/
+.idea/
