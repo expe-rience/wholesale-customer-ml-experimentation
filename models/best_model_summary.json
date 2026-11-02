@@ -1,0 +1,45 @@
+{
+  "selected_model": "HistGradientBoosting",
+  "selection_metric": "cross-validation macro-F1",
+  "train_rows": 330,
+  "test_rows": 110,
+  "cv_macro_f1_mean": 0.9348974303535901,
+  "cv_macro_f1_std": 0.023060870289279493,
+  "test_macro_f1": 0.9569663936339738,
+  "test_balanced_accuracy": 0.9471380471380471,
+  "test_accuracy": 0.9636363636363636,
+  "test_prediction_seconds": 0.028067899998859502,
+  "classification_report": {
+    "1": {
+      "precision": 1.0,
+      "recall": 0.8636363636363636,
+      "f1-score": 0.926829268292683,
+      "support": 22.0
+    },
+    "2": {
+      "precision": 0.9777777777777777,
+      "recall": 0.9777777777777777,
+      "f1-score": 0.9777777777777777,
+      "support": 45.0
+    },
+    "3": {
+      "precision": 0.9347826086956522,
+      "recall": 1.0,
+      "f1-score": 0.9662921348314607,
+      "support": 43.0
+    },
+    "accuracy": 0.9636363636363636,
+    "macro avg": {
+      "precision": 0.9708534621578101,
+      "recall": 0.9471380471380471,
+      "f1-score": 0.9569663936339738,
+      "support": 110.0
+    },
+    "weighted avg": {
+      "precision": 0.9654150197628458,
+      "recall": 0.9636363636363636,
+      "f1-score": 0.9630982336381076,
+      "support": 110.0
+    }
+  }
+}

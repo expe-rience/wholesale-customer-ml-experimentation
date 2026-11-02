@@ -58,6 +58,40 @@ uvicorn src.api:app --reload
 
 Open `http://127.0.0.1:8000/docs` for interactive API documentation.
 
+## Quick start (Docker)
+
+Anyone can run the trained model without installing Python:
+
+```bash
+docker run -p 8000:8000 ghcr.io/expe-rience/wholesale-customer-ml-experimentation:v0.1.0
+```
+
+Open http://localhost:8000/docs and try `POST /predict`:
+
+```json
+{"Region": 3, "Fresh": 12669, "Milk": 9656, "Grocery": 7561,
+ "Frozen": 214, "Detergents_Paper": 2674, "Delicassen": 1338}
+```
+
+Response: `{"predicted_class": "...", "class_probabilities": {...}}`
+
+Build it yourself:
+
+```bash
+docker build -t wholesale-ml .
+docker run -p 8000:8000 wholesale-ml
+```
+
+The image serves the model stored in `models/` (trained with scikit-learn 1.9.1, pinned in `requirements-serve.txt` because pickled models must be loaded with the same version). Override the model with the `MODEL_PATH` environment variable.
+
+## How this maps to production
+
+- Stateless container: the model loads at startup, so you scale by running more copies and roll back by redeploying an older image tag.
+- CI/CD: pull request -> tests -> merge -> tag `vX.Y.Z` -> GitHub Actions builds and publishes the image to GHCR.
+- A production system would add a model registry (for example MLflow), authentication, request logging, drift and accuracy monitoring, and canary releases.
+
+This is a demonstration service on a small public dataset (440 rows), not a production system.
+
 ## Git workflow
 
 Use feature branches and pull requests. Run tests before pushing:

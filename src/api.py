@@ -1,10 +1,11 @@
+import os
 from pathlib import Path
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-MODEL_PATH = Path("artifacts/best_model.joblib")
+MODEL_PATH = Path(os.getenv("MODEL_PATH", "artifacts/best_model.joblib"))
 app = FastAPI(title="Wholesale Customer Classifier", version="0.1.0")
 model = None
 
